@@ -16,6 +16,16 @@ function handleClick() {
             remainingText.textContent = `Remaining cards: ${data.remaining}`
             deckId = data.deck_id
             console.log(deckId)
+
+            newDeckBtn.disabled = true; 
+            drawCardBtn.disabled = false; 
+
+            computerScore = 0;
+            myScore = 0;
+            computerScoreEl.textContent = "Computer score: 0";
+            myScoreEl.textContent = "My score: 0";
+
+            header.textContent = "Game of War";
         })
 }
 
@@ -37,6 +47,7 @@ drawCardBtn.addEventListener("click", () => {
             
             if (data.remaining === 0) {
                 drawCardBtn.disabled = true
+                newDeckBtn.disabled = false;
                 if (computerScore > myScore) {
                     header.textContent = "The computer won the game!"
                 } else if (myScore > computerScore) {
